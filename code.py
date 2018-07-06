@@ -35,21 +35,9 @@ class login:
         i = web.input()
         #print(type(i.code))
         had_code= "https://github.com/login/oauth/access_token?client_id=19f2e6d6a157b86e559e&code="+i.code+"&client_secret=e4cfde3c50cac6a5ef4a0dea81a2a71126860535&redirect_uri=http://192.168.0.128:8080/login"
-        #return had_code
-        #print(i.code)
-        #raise web.seeother(had_code)
-        tokenReq = userName(had_code)
-        #print tokenReq
-        #return tokenReq
+	tokenReq = userName(had_code)
         had_token = "https://api.github.com/user?"+tokenReq
-        #raise web.seeother(had_token)
         userInfomation = userName(had_token)
-        #print type(userInfomation)
-        #print userInfomation[2]
-        #raise web.seeother(userInfomation)
-        #print type(userInfomation)
-        #return userInfomation
-
         params = json.loads(userInfomation)
         return "username = "+params["login"],"email = "+params["email"]
 
